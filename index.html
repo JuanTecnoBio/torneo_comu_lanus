@@ -111,18 +111,30 @@ section{padding:5rem 1.5rem}
 .premio-card p{font-size:.85rem;color:var(--text-muted);line-height:1.5}
 
 #galeria{background:var(--dark)}
+.gal-tabs{display:flex;gap:.4rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.gal-tab{font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:.6rem 1.2rem;border:1px solid rgba(245,197,24,.2);border-radius:4px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all .25s}
+.gal-tab:hover{border-color:var(--gold-muted);color:var(--cream)}
+.gal-tab.active{background:var(--gold);color:var(--burgundy-dark);border-color:var(--gold)}
+.gal-panel{display:none}
+.gal-panel.active{display:block}
+.gal-empty{text-align:center;padding:3rem 1rem;color:var(--text-muted);font-family:'Oswald',sans-serif;letter-spacing:1px;font-size:.95rem;background:rgba(255,255,255,.02);border:1px dashed rgba(245,197,24,.15);border-radius:8px}
+.gal-empty .icon{font-size:2.5rem;margin-bottom:.5rem;display:block;opacity:.4}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.8rem}
 .gallery-item{aspect-ratio:4/3;border-radius:8px;overflow:hidden;position:relative;cursor:pointer;transition:transform .3s}
 .gallery-item:hover{transform:scale(1.02)}
 .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .gallery-item:hover img{transform:scale(1.08)}
-.gallery-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--burgundy-dark),var(--dark-card));color:var(--text-muted);font-size:.85rem;font-family:'Oswald',sans-serif;letter-spacing:1px}
-.gallery-placeholder .icon{font-size:2rem;margin-bottom:.5rem;opacity:.5}
 .gallery-note{text-align:center;margin-top:1.5rem;font-size:.9rem;color:var(--text-muted);font-style:italic}
+.gal-count{font-size:.75rem;color:var(--text-muted);margin-bottom:.8rem;font-family:'Oswald',sans-serif;letter-spacing:1px}
 .lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);align-items:center;justify-content:center;cursor:pointer}
 .lightbox.active{display:flex}
-.lightbox img{max-width:90vw;max-height:90vh;border-radius:8px}
+.lightbox img{max-width:80vw;max-height:85vh;border-radius:8px}
 .lightbox-close{position:absolute;top:1.5rem;right:1.5rem;font-size:2rem;color:white;cursor:pointer;background:none;border:none;font-family:'Oswald',sans-serif}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(245,197,24,.15);border:1px solid rgba(245,197,24,.3);color:var(--gold);font-size:2.5rem;width:50px;height:70px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lightbox-nav:hover{background:rgba(245,197,24,.3)}
+.lightbox-prev{left:1rem}
+.lightbox-next{right:1rem}
+.lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:'Oswald',sans-serif;font-size:.9rem;color:var(--gold-muted);letter-spacing:2px}
 
 .form-tabs{display:flex;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap}
 .form-tab{font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:.7rem 1.5rem;border:1px solid rgba(245,197,24,.2);border-radius:4px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all .25s}
@@ -325,25 +337,68 @@ footer .foot-brand{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:va
   <div class="container">
     <p class="section-label reveal">Ediciones anteriores</p>
     <h2 class="section-title reveal">Galería <span>de fotos</span></h2>
-    <p class="section-desc reveal">Los mejores momentos de las ediciones pasadas del torneo.</p>
-    <div class="gallery-grid reveal" id="galleryGrid">
-      <!-- PARA AGREGAR FOTOS: creá carpeta "fotos/" en tu repo de GitHub, subí las imágenes, y reemplazá los placeholders por:
-      <div class="gallery-item" onclick="openLightbox(this)"><img src="fotos/nombre.jpg" alt="Descripción" loading="lazy"></div>
-      -->
-      <div class="gallery-item"><div class="gallery-placeholder"><span class="icon">📸</span>Edición 2022</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span class="icon">📸</span>Edición 2023</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span class="icon">📸</span>Edición 2024</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span class="icon">📸</span>Edición 2025</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span class="icon">📸</span>Premiaciones</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder"><span class="icon">📸</span>Mejores jugadas</div></div>
+    <p class="section-desc reveal">Los mejores momentos de cada edición del torneo en Concordia.</p>
+
+    <div class="gal-tabs reveal">
+      <button class="gal-tab active" onclick="switchGal('2025',this)">2025</button>
+      <button class="gal-tab" onclick="switchGal('2024',this)">2024</button>
+      <button class="gal-tab" onclick="switchGal('2023',this)">2023</button>
+      <button class="gal-tab" onclick="switchGal('2022',this)">2022</button>
     </div>
-    <p class="gallery-note reveal">📷 ¡Envianos tus fotos por WhatsApp y las publicamos acá!</p>
+
+    <!-- ═══════════════════════════════════════════════
+         CÓMO AGREGAR FOTOS:
+         
+         1. En tu repo de GitHub, creá carpetas:
+            fotos/2022/
+            fotos/2023/
+            fotos/2024/
+            fotos/2025/
+         
+         2. Subí las imágenes en la carpeta del año que corresponda
+            (ej: fotos/2024/foto1.jpg, fotos/2024/foto2.jpg)
+         
+         3. Dentro del <div class="gal-panel"> del año correspondiente,
+            reemplazá el bloque <div class="gal-empty"> por líneas como:
+            
+            <div class="gallery-grid">
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="fotos/2024/foto1.jpg" alt="Descripción" loading="lazy">
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="fotos/2024/foto2.jpg" alt="Descripción" loading="lazy">
+              </div>
+            </div>
+         
+         4. Hacé commit y push. ¡Listo!
+    ═══════════════════════════════════════════════ -->
+
+    <div class="gal-panel active" id="gal-2025">
+      <div class="gal-empty reveal"><span class="icon">📸</span>Próximamente fotos de la edición 2025<br><small>¡Envianos tus fotos por WhatsApp!</small></div>
+    </div>
+
+    <div class="gal-panel" id="gal-2024">
+      <div class="gal-empty reveal"><span class="icon">📸</span>Próximamente fotos de la edición 2024<br><small>¡Envianos tus fotos por WhatsApp!</small></div>
+    </div>
+
+    <div class="gal-panel" id="gal-2023">
+      <div class="gal-empty reveal"><span class="icon">📸</span>Próximamente fotos de la edición 2023<br><small>¡Envianos tus fotos por WhatsApp!</small></div>
+    </div>
+
+    <div class="gal-panel" id="gal-2022">
+      <div class="gal-empty reveal"><span class="icon">📸</span>Próximamente fotos de la edición 2022<br><small>¡Envianos tus fotos por WhatsApp!</small></div>
+    </div>
+
+    <p class="gallery-note reveal">📷 ¿Tenés fotos de ediciones anteriores? <a href="https://wa.me/5493434659942?text=Hola!%20Tengo%20fotos%20del%20torneo%20para%20la%20galería" target="_blank" style="color:var(--gold)">Envialas por WhatsApp</a></p>
   </div>
 </section>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close">&times;</button>
-  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation();navLightbox(-1)">&#8249;</button>
+  <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()">
+  <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation();navLightbox(1)">&#8250;</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
 <section id="formulario">
@@ -509,6 +564,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 
 function switchTab(id,btn){document.querySelectorAll('.form-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.form-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById('panel-'+id).classList.add('active')}
 
+function switchGal(year,btn){document.querySelectorAll('.gal-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.gal-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById('gal-'+year).classList.add('active')}
+
 function addStaff(){const c=document.getElementById('staffBox');const r=document.createElement('div');r.className='delegacion-row';r.innerHTML='<div class="form-row"><input type="text" name="staff_nombre[]" placeholder="Nombre y Apellido"></div><div class="form-row"><input type="text" name="staff_dni[]" placeholder="DNI"></div><div class="form-row"><select name="staff_rol[]"><option>DT</option><option>Ayudante</option><option>Profe / PF</option><option>Delegado</option><option>Acompañante</option></select></div><button type="button" class="remove-row" onclick="delRow(this)">✕</button>';c.appendChild(r)}
 function addPlayer(){const c=document.getElementById('playerBox');const r=document.createElement('div');r.className='delegacion-row';r.innerHTML='<div class="form-row"><input type="text" name="jug_nombre[]" placeholder="Nombre y Apellido"></div><div class="form-row"><input type="text" name="jug_dni[]" placeholder="DNI"></div><div class="form-row"><input type="text" name="jug_cat[]" placeholder="Cat. (ej: 2015)"></div><button type="button" class="remove-row" onclick="delRow(this)">✕</button>';c.appendChild(r)}
 function delRow(btn){const p=btn.closest('.delegacion-row').parentElement;if(p.children.length>1)btn.closest('.delegacion-row').remove()}
@@ -525,9 +582,12 @@ function handlePre(e){e.preventDefault();const d=getPData();let b='PRE-INSCRIPCI
 
 function enviarPreWA(){const f=document.getElementById('formPre');if(!f.club.value||!f.responsable.value||!f.telefono.value){alert('Completá al menos: Club, Responsable y Teléfono.');return}const d=getPData();let m='⚽ *PRE-INSCRIPCIÓN - LANÚS TU AMIGO 2026*\n\n🏟️ Club: '+d.club+'\n📍 Ciudad: '+d.ciudad+'\n👤 Resp: '+d.resp+' ('+d.cargo+')\n📞 Tel: '+d.tel+'\n📧 Email: '+d.email+'\n📋 Categorías: '+d.cats+'\n💰 Pago: '+d.pago+' ('+d.estado+')';if(d.staff.length)m+='\n\n👥 *Cuerpo Técnico:*\n'+d.staff.join('\n');if(d.jug.length)m+='\n\n⚽ *Jugadores:*\n'+d.jug.join('\n');if(d.obs)m+='\n\n📝 Obs: '+d.obs;window.open('https://wa.me/5493434659942?text='+encodeURIComponent(m),'_blank')}
 
-function openLightbox(el){const img=el.querySelector('img');if(!img)return;document.getElementById('lightboxImg').src=img.src;document.getElementById('lightbox').classList.add('active')}
+let lbImages=[];let lbIndex=0;
+function openLightbox(el){const panel=el.closest('.gal-panel')||el.closest('.gallery-grid').parentElement;const items=[...panel.querySelectorAll('.gallery-item img')];if(!items.length)return;lbImages=items.map(img=>img.src);const clickedImg=el.querySelector('img');lbIndex=lbImages.indexOf(clickedImg.src);document.getElementById('lightboxImg').src=lbImages[lbIndex];updateCounter();document.getElementById('lightbox').classList.add('active')}
 function closeLightbox(){document.getElementById('lightbox').classList.remove('active')}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
+function navLightbox(dir){lbIndex=(lbIndex+dir+lbImages.length)%lbImages.length;document.getElementById('lightboxImg').src=lbImages[lbIndex];updateCounter()}
+function updateCounter(){document.getElementById('lightboxCounter').textContent=(lbIndex+1)+' / '+lbImages.length}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();if(e.key==='ArrowRight')navLightbox(1);if(e.key==='ArrowLeft')navLightbox(-1)});
 </script>
 </body>
 </html>
