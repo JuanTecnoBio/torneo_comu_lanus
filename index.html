@@ -4,630 +4,225 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lanús Tu Amigo · Sede Concordia · 5ta Edición 2026</title>
+<meta name="description" content="Torneo Nacional de Fútbol Infantil Lanús Tu Amigo, Sede Concordia, 5ta Edición 2026. 9 al 12 de Julio. Categorías 2014 a 2018.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --burgundy: #6B1629;
-  --burgundy-dark: #4A0E1C;
-  --burgundy-deep: #2E0A12;
-  --gold: #F5C518;
-  --gold-light: #FFD95A;
-  --gold-muted: #C9A84C;
-  --cream: #FFF8E7;
-  --dark: #1A0A0F;
-  --dark-card: #2A1018;
-  --dark-card-alt: #351520;
-  --text-light: #F0E6D0;
-  --text-muted: #B89A80;
-  --white: #FFFFFF;
-  --red-accent: #D4392E;
-}
+:root{--burgundy:#6B1629;--burgundy-dark:#4A0E1C;--burgundy-deep:#2E0A12;--gold:#F5C518;--gold-light:#FFD95A;--gold-muted:#C9A84C;--cream:#FFF8E7;--dark:#1A0A0F;--dark-card:#2A1018;--text-light:#F0E6D0;--text-muted:#B89A80;--white:#FFFFFF;--red-accent:#D4392E;--green-wa:#25D366}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--dark);color:var(--text-light);overflow-x:hidden}
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,10,15,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(245,197,24,0.15);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,.5)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.6rem 1.5rem}
+.nav-brand{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:2px;text-decoration:none}
+.nav-links{display:flex;gap:.2rem;flex-wrap:wrap}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-family:'Oswald',sans-serif;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;padding:.4rem .6rem;border-radius:4px;transition:all .25s}
+.nav-links a:hover{color:var(--gold);background:rgba(245,197,24,.08)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--gold);transition:.3s}
 
-html { scroll-behavior: smooth; }
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:linear-gradient(165deg,var(--burgundy) 0%,var(--burgundy-dark) 40%,var(--dark) 100%);overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(245,197,24,.08) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(107,22,41,.3) 0%,transparent 50%)}
+.hero::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C518' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-content{position:relative;z-index:2;padding:2rem}
+.hero-badge{display:inline-block;font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-muted);padding:.5rem 1.5rem;border-radius:50px;margin-bottom:1.5rem;animation:fadeDown .8s ease-out}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,8rem);color:var(--white);line-height:.95;letter-spacing:3px;margin-bottom:.3rem;animation:fadeUp .8s ease-out}
+.hero h1 span{color:var(--gold)}
+.hero-sub{font-family:'Oswald',sans-serif;font-size:clamp(1.1rem,3vw,1.6rem);color:var(--gold-muted);font-weight:400;letter-spacing:6px;text-transform:uppercase;margin-bottom:2rem;animation:fadeUp .8s ease-out .15s both}
+.hero-date-box{display:inline-block;background:var(--gold);color:var(--burgundy-dark);font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,5vw,3rem);padding:.4rem 2rem;letter-spacing:2px;clip-path:polygon(3% 0%,100% 0%,97% 100%,0% 100%);margin-bottom:1.5rem;animation:fadeUp .8s ease-out .3s both}
+.hero-location{font-size:1rem;color:var(--text-muted);margin-top:.5rem;animation:fadeUp .8s ease-out .4s both}
+.hero-location a{color:var(--gold);text-decoration:none}
+.hero-location a:hover{text-decoration:underline}
+.hero-cta{display:inline-flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;justify-content:center;animation:fadeUp .8s ease-out .5s both}
 
-body {
-  font-family: 'Source Sans 3', sans-serif;
-  background: var(--dark);
-  color: var(--text-light);
-  overflow-x: hidden;
-}
+.btn{font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;padding:.85rem 2.2rem;border:none;border-radius:4px;cursor:pointer;text-decoration:none;transition:all .3s;display:inline-block;text-align:center}
+.btn-gold{background:var(--gold);color:var(--burgundy-dark)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,197,24,.3)}
+.btn-outline{background:transparent;color:var(--gold);border:2px solid var(--gold-muted)}
+.btn-outline:hover{border-color:var(--gold);background:rgba(245,197,24,.08)}
+.btn-wa{background:var(--green-wa);color:#fff}
+.btn-wa:hover{background:#20bd5a;transform:translateY(-2px)}
 
-/* ═══════════ NAV ═══════════ */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(26,10,15,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(245,197,24,0.15);
-  transition: box-shadow 0.3s;
-}
-nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.5); }
-.nav-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.6rem 1.5rem;
-}
-.nav-brand {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.4rem; color: var(--gold);
-  letter-spacing: 2px; text-decoration: none;
-}
-.nav-links { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-.nav-links a {
-  color: var(--text-muted); text-decoration: none;
-  font-family: 'Oswald', sans-serif; font-size: 0.8rem;
-  text-transform: uppercase; letter-spacing: 1px;
-  padding: 0.4rem 0.7rem; border-radius: 4px;
-  transition: all 0.25s;
-}
-.nav-links a:hover { color: var(--gold); background: rgba(245,197,24,0.08); }
-.hamburger {
-  display: none; background: none; border: none; cursor: pointer;
-  flex-direction: column; gap: 5px; padding: 8px;
-}
-.hamburger span {
-  display: block; width: 24px; height: 2px;
-  background: var(--gold); transition: 0.3s;
-}
+section{padding:5rem 1.5rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--gold-muted);margin-bottom:.5rem}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,3.5rem);color:var(--white);letter-spacing:2px;margin-bottom:1rem}
+.section-title span{color:var(--gold)}
+.section-desc{font-size:1.05rem;color:var(--text-muted);max-width:600px;line-height:1.6;margin-bottom:3rem}
 
-/* ═══════════ HERO ═══════════ */
-.hero {
-  min-height: 100vh; display: flex; align-items: center; justify-content: center;
-  text-align: center; position: relative;
-  background: linear-gradient(165deg, var(--burgundy) 0%, var(--burgundy-dark) 40%, var(--dark) 100%);
-  overflow: hidden;
-}
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 30% 20%, rgba(245,197,24,0.08) 0%, transparent 60%),
-              radial-gradient(ellipse at 70% 80%, rgba(107,22,41,0.3) 0%, transparent 50%);
-}
-.hero::after {
-  content: ''; position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C518' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-.hero-content { position: relative; z-index: 2; padding: 2rem; }
-.hero-badge {
-  display: inline-block;
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.85rem; font-weight: 600;
-  letter-spacing: 4px; text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid var(--gold-muted);
-  padding: 0.5rem 1.5rem; border-radius: 50px;
-  margin-bottom: 1.5rem;
-  animation: fadeDown 0.8s ease-out;
-}
-.hero h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3.5rem, 10vw, 8rem);
-  color: var(--white);
-  line-height: 0.95; letter-spacing: 3px;
-  margin-bottom: 0.3rem;
-  animation: fadeUp 0.8s ease-out;
-}
-.hero h1 span { color: var(--gold); }
-.hero-sub {
-  font-family: 'Oswald', sans-serif;
-  font-size: clamp(1.1rem, 3vw, 1.6rem);
-  color: var(--gold-muted); font-weight: 400;
-  letter-spacing: 6px; text-transform: uppercase;
-  margin-bottom: 2rem;
-  animation: fadeUp 0.8s ease-out 0.15s both;
-}
-.hero-date-box {
-  display: inline-block;
-  background: var(--gold);
-  color: var(--burgundy-dark);
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.8rem, 5vw, 3rem);
-  padding: 0.4rem 2rem;
-  letter-spacing: 2px;
-  clip-path: polygon(3% 0%, 100% 0%, 97% 100%, 0% 100%);
-  margin-bottom: 1.5rem;
-  animation: fadeUp 0.8s ease-out 0.3s both;
-}
-.hero-location {
-  font-size: 1rem; color: var(--text-muted);
-  margin-top: 0.5rem;
-  animation: fadeUp 0.8s ease-out 0.4s both;
-}
-.hero-location strong { color: var(--cream); }
-.hero-cta {
-  display: inline-flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center;
-  animation: fadeUp 0.8s ease-out 0.5s both;
-}
-.btn {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.95rem; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 2px;
-  padding: 0.85rem 2.2rem;
-  border: none; border-radius: 4px;
-  cursor: pointer; text-decoration: none;
-  transition: all 0.3s;
-}
-.btn-gold {
-  background: var(--gold); color: var(--burgundy-dark);
-}
-.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,197,24,0.3); }
-.btn-outline {
-  background: transparent; color: var(--gold);
-  border: 2px solid var(--gold-muted);
-}
-.btn-outline:hover { border-color: var(--gold); background: rgba(245,197,24,0.08); }
+#categorias{background:var(--dark)}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.cat-card{background:var(--dark-card);border:1px solid rgba(245,197,24,.1);border-radius:8px;overflow:hidden;transition:transform .3s,border-color .3s}
+.cat-card:hover{transform:translateY(-4px);border-color:rgba(245,197,24,.3)}
+.cat-header{background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark));padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.cat-year{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--gold);line-height:1}
+.cat-format{text-align:right;font-family:'Oswald',sans-serif;font-size:.9rem;color:var(--cream);font-weight:400;letter-spacing:1px}
+.cat-format small{display:block;color:var(--gold-muted);font-size:.75rem;margin-top:2px}
+.cat-body{padding:1.2rem 1.5rem}
+.cat-body ul{list-style:none}
+.cat-body li{padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.92rem;color:var(--text-muted);display:flex;align-items:flex-start;gap:.5rem}
+.cat-body li::before{content:'▸';color:var(--gold-muted);flex-shrink:0;margin-top:1px}
+.cat-body li:last-child{border-bottom:none}
+.cat-body li strong{color:var(--cream)}
+.cat-tag{display:inline-block;font-family:'Oswald',sans-serif;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;padding:.2rem .6rem;border-radius:3px;margin-top:.8rem}
+.tag-clasificatorio{background:rgba(245,197,24,.15);color:var(--gold)}
+.tag-promocional{background:rgba(212,57,46,.15);color:#E87C74}
 
-/* ═══════════ SECTIONS ═══════════ */
-section { padding: 5rem 1.5rem; }
-.container { max-width: 1100px; margin: 0 auto; }
+#modalidad{background:linear-gradient(180deg,var(--dark),var(--burgundy-deep))}
+.phase-flow{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem;padding:1rem;background:rgba(245,197,24,.05);border-radius:6px}
+.phase-step{font-family:'Oswald',sans-serif;font-size:.85rem;color:var(--cream);background:var(--burgundy-dark);padding:.4rem 1rem;border-radius:4px}
+.phase-arrow{color:var(--gold);font-weight:bold}
+.rules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.rule-card{background:rgba(255,255,255,.03);border:1px solid rgba(245,197,24,.08);border-radius:8px;padding:1.5rem}
+.rule-card h3{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:.8rem;padding-bottom:.6rem;border-bottom:1px solid rgba(245,197,24,.15)}
+.rule-card p,.rule-card li{font-size:.9rem;color:var(--text-muted);line-height:1.6}
+.rule-card ul{list-style:none}
+.rule-card li{padding:.3rem 0}
+.rule-card li::before{content:'•';color:var(--gold-muted);margin-right:.5rem}
+.formula-box{background:var(--dark-card);border:1px solid var(--gold-muted);border-radius:8px;padding:1.5rem;text-align:center;margin-top:1.5rem}
+.formula-box .formula{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold);letter-spacing:2px;margin:.5rem 0}
+.formula-box p{font-size:.85rem;color:var(--text-muted)}
 
-.section-label {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.8rem; font-weight: 600;
-  letter-spacing: 5px; text-transform: uppercase;
-  color: var(--gold-muted);
-  margin-bottom: 0.5rem;
-}
-.section-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-  color: var(--white);
-  letter-spacing: 2px;
-  margin-bottom: 1rem;
-}
-.section-title span { color: var(--gold); }
-.section-desc {
-  font-size: 1.05rem; color: var(--text-muted);
-  max-width: 600px; line-height: 1.6;
-  margin-bottom: 3rem;
-}
+#inscripcion{background:var(--dark)}
+.pricing-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-bottom:2rem}
+.price-card{background:var(--dark-card);border:1px solid rgba(245,197,24,.1);border-radius:8px;padding:2rem 1.5rem;text-align:center;transition:transform .3s,border-color .3s}
+.price-card:hover{transform:translateY(-4px);border-color:var(--gold-muted)}
+.price-cat{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;color:var(--cream);letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
+.price-amount{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--gold);line-height:1.1}
+.price-amount small{font-size:1.2rem;color:var(--gold-muted)}
+.price-note{font-size:.82rem;color:var(--text-muted);margin-top:.6rem}
+.promo-banner{background:linear-gradient(135deg,var(--gold),var(--gold-muted));color:var(--burgundy-dark);border-radius:8px;padding:1.5rem 2rem;text-align:center;margin-bottom:2rem}
+.promo-banner h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:2px}
+.promo-banner p{font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:400}
+.payment-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.payment-card{background:rgba(255,255,255,.03);border:1px solid rgba(245,197,24,.08);border-radius:8px;padding:1.3rem}
+.payment-card h4{font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:600;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
+.payment-card p{font-size:.9rem;color:var(--text-muted);line-height:1.5}
+.alias-box{background:var(--dark-card);border:1px solid var(--gold-muted);border-radius:4px;padding:.6rem 1rem;margin-top:.5rem;font-family:'Oswald',sans-serif;font-size:1.1rem;color:var(--gold);letter-spacing:2px;text-align:center;user-select:all;cursor:pointer;transition:background .3s}
+.alias-box:hover{background:rgba(245,197,24,.08)}
 
-/* ═══════════ CATEGORIAS ═══════════ */
-#categorias { background: var(--dark); }
-.cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-.cat-card {
-  background: var(--dark-card);
-  border: 1px solid rgba(245,197,24,0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s, border-color 0.3s;
-}
-.cat-card:hover { transform: translateY(-4px); border-color: rgba(245,197,24,0.3); }
-.cat-header {
-  background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
-  padding: 1.2rem 1.5rem;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.cat-year {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.4rem; color: var(--gold);
-  line-height: 1;
-}
-.cat-format {
-  text-align: right; font-family: 'Oswald', sans-serif;
-  font-size: 0.9rem; color: var(--cream);
-  font-weight: 400; letter-spacing: 1px;
-}
-.cat-format small { display: block; color: var(--gold-muted); font-size: 0.75rem; margin-top: 2px; }
-.cat-body { padding: 1.2rem 1.5rem; }
-.cat-body ul { list-style: none; }
-.cat-body li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  font-size: 0.92rem; color: var(--text-muted);
-  display: flex; align-items: flex-start; gap: 0.5rem;
-}
-.cat-body li::before {
-  content: '▸'; color: var(--gold-muted); flex-shrink: 0; margin-top: 1px;
-}
-.cat-body li:last-child { border-bottom: none; }
-.cat-body li strong { color: var(--cream); }
-.cat-tag {
-  display: inline-block; font-family: 'Oswald', sans-serif;
-  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;
-  padding: 0.2rem 0.6rem; border-radius: 3px; margin-top: 0.8rem;
-}
-.tag-clasificatorio { background: rgba(245,197,24,0.15); color: var(--gold); }
-.tag-promocional { background: rgba(212,57,46,0.15); color: #E87C74; }
+#premios{background:linear-gradient(180deg,var(--dark),var(--burgundy-deep) 50%,var(--dark))}
+.premios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
+.premio-card{background:var(--dark-card);border:1px solid rgba(245,197,24,.1);border-radius:8px;padding:1.5rem;text-align:center}
+.premio-icon{font-size:2.5rem;margin-bottom:.5rem}
+.premio-card h3{font-family:'Oswald',sans-serif;font-size:1rem;color:var(--cream);margin-bottom:.4rem}
+.premio-card p{font-size:.85rem;color:var(--text-muted);line-height:1.5}
 
-/* ═══════════ MODALIDAD ═══════════ */
-#modalidad {
-  background: linear-gradient(180deg, var(--dark) 0%, var(--burgundy-deep) 100%);
-}
-.rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
-.rule-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(245,197,24,0.08);
-  border-radius: 8px; padding: 1.5rem;
-}
-.rule-card h3 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1rem; font-weight: 600;
-  color: var(--gold); letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid rgba(245,197,24,0.15);
-}
-.rule-card p, .rule-card li {
-  font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;
-}
-.rule-card ul { list-style: none; }
-.rule-card li { padding: 0.3rem 0; }
-.rule-card li::before { content: '•'; color: var(--gold-muted); margin-right: 0.5rem; }
+#galeria{background:var(--dark)}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.8rem}
+.gallery-item{aspect-ratio:4/3;border-radius:8px;overflow:hidden;position:relative;cursor:pointer;transition:transform .3s}
+.gallery-item:hover{transform:scale(1.02)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--burgundy-dark),var(--dark-card));color:var(--text-muted);font-size:.85rem;font-family:'Oswald',sans-serif;letter-spacing:1px}
+.gallery-placeholder .icon{font-size:2rem;margin-bottom:.5rem;opacity:.5}
+.gallery-note{text-align:center;margin-top:1.5rem;font-size:.9rem;color:var(--text-muted);font-style:italic}
+.lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);align-items:center;justify-content:center;cursor:pointer}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;border-radius:8px}
+.lightbox-close{position:absolute;top:1.5rem;right:1.5rem;font-size:2rem;color:white;cursor:pointer;background:none;border:none;font-family:'Oswald',sans-serif}
 
-/* Fair Play formula */
-.formula-box {
-  background: var(--dark-card);
-  border: 1px solid var(--gold-muted);
-  border-radius: 8px;
-  padding: 1.5rem; text-align: center;
-  margin-top: 1.5rem;
-}
-.formula-box .formula {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.6rem; color: var(--gold);
-  letter-spacing: 2px; margin: 0.5rem 0;
-}
-.formula-box p { font-size: 0.85rem; color: var(--text-muted); }
+.form-tabs{display:flex;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.form-tab{font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:.7rem 1.5rem;border:1px solid rgba(245,197,24,.2);border-radius:4px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all .25s}
+.form-tab:hover{border-color:var(--gold-muted);color:var(--cream)}
+.form-tab.active{background:var(--gold);color:var(--burgundy-dark);border-color:var(--gold)}
+.form-panel{display:none}
+.form-panel.active{display:block}
 
-/* ═══════════ INSCRIPCION / COSTOS ═══════════ */
-#inscripcion {
-  background: var(--dark);
-}
-.pricing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-.price-card {
-  background: var(--dark-card);
-  border: 1px solid rgba(245,197,24,0.1);
-  border-radius: 8px; padding: 2rem 1.5rem;
-  text-align: center;
-  transition: transform 0.3s, border-color 0.3s;
-}
-.price-card:hover { transform: translateY(-4px); border-color: var(--gold-muted); }
-.price-cat {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1rem; font-weight: 600;
-  color: var(--cream); letter-spacing: 2px;
-  text-transform: uppercase; margin-bottom: 0.5rem;
-}
-.price-amount {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem; color: var(--gold);
-  line-height: 1.1;
-}
-.price-amount small { font-size: 1.2rem; color: var(--gold-muted); }
-.price-note {
-  font-size: 0.82rem; color: var(--text-muted);
-  margin-top: 0.6rem;
-}
+#formulario{background:linear-gradient(180deg,var(--dark),var(--burgundy-deep))}
+.form-wrapper{background:var(--dark-card);border:1px solid rgba(245,197,24,.1);border-radius:12px;padding:2.5rem;max-width:800px}
+.form-section-title{font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:600;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin:1.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(245,197,24,.15)}
+.form-section-title:first-of-type{margin-top:0}
+.form-row{margin-bottom:1rem}
+.form-row label{display:block;font-family:'Oswald',sans-serif;font-size:.78rem;font-weight:600;color:var(--gold-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:.4rem}
+.form-row input,.form-row select,.form-row textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(245,197,24,.15);border-radius:6px;padding:.75rem 1rem;color:var(--cream);font-family:'Source Sans 3',sans-serif;font-size:.95rem;transition:border-color .3s}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--gold-muted)}
+.form-row select{cursor:pointer}
+.form-row select option{background:var(--dark-card);color:var(--cream)}
+.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-submit{margin-top:1.5rem;display:flex;gap:.8rem;flex-wrap:wrap}
+.form-submit .btn{flex:1;min-width:200px}
+.form-note{text-align:center;margin-top:1rem;font-size:.8rem;color:var(--text-muted)}
+.checkbox-group{display:flex;flex-wrap:wrap;gap:.6rem}
+.checkbox-item{display:flex;align-items:center;gap:.4rem;font-size:.9rem;color:var(--text-light);cursor:pointer}
+.checkbox-item input[type="checkbox"]{width:18px;height:18px;accent-color:var(--gold);cursor:pointer}
+.delegacion-row{display:grid;grid-template-columns:2fr 1fr 1fr 40px;gap:.5rem;margin-bottom:.5rem;align-items:end}
+.delegacion-row .form-row{margin-bottom:0}
+.remove-row{background:rgba(212,57,46,.2);border:1px solid rgba(212,57,46,.3);color:var(--red-accent);border-radius:6px;cursor:pointer;font-size:1.2rem;height:42px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.remove-row:hover{background:rgba(212,57,46,.4)}
+.add-row-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Oswald',sans-serif;font-size:.8rem;color:var(--gold);letter-spacing:1px;text-transform:uppercase;background:rgba(245,197,24,.08);border:1px dashed var(--gold-muted);border-radius:6px;padding:.6rem 1.2rem;cursor:pointer;transition:all .2s;margin-top:.5rem}
+.add-row-btn:hover{background:rgba(245,197,24,.15)}
+.form-success{display:none;text-align:center;padding:2rem}
+.form-success.show{display:block}
+.form-success .check{font-size:3rem;margin-bottom:1rem}
+.form-success h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold);margin-bottom:.5rem}
+.form-success p{color:var(--text-muted)}
 
-.promo-banner {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-muted) 100%);
-  color: var(--burgundy-dark);
-  border-radius: 8px; padding: 1.5rem 2rem;
-  text-align: center; margin-bottom: 2rem;
-}
-.promo-banner h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem; letter-spacing: 2px;
-}
-.promo-banner p {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.9rem; font-weight: 400;
-}
+#alojamiento{background:var(--dark)}
+.aloj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+.aloj-card{background:var(--dark-card);border:1px solid rgba(245,197,24,.1);border-radius:8px;padding:1.5rem;transition:border-color .3s}
+.aloj-card:hover{border-color:rgba(245,197,24,.25)}
+.aloj-card h3{font-family:'Oswald',sans-serif;font-size:1.05rem;color:var(--cream);margin-bottom:.3rem}
+.aloj-type{font-family:'Oswald',sans-serif;font-size:.7rem;color:var(--gold-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:.6rem}
+.aloj-card p{font-size:.88rem;color:var(--text-muted);line-height:1.5}
+.aloj-card a{color:var(--gold);text-decoration:none;font-weight:600}
 
-.payment-info {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.2rem;
-}
-.payment-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(245,197,24,0.08);
-  border-radius: 8px; padding: 1.3rem;
-}
-.payment-card h4 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.85rem; font-weight: 600;
-  color: var(--gold); letter-spacing: 2px;
-  text-transform: uppercase; margin-bottom: 0.5rem;
-}
-.payment-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
-.payment-card .alias-box {
-  background: var(--dark-card);
-  border: 1px solid var(--gold-muted);
-  border-radius: 4px; padding: 0.6rem 1rem;
-  margin-top: 0.5rem;
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.1rem; color: var(--gold);
-  letter-spacing: 2px; text-align: center;
-  user-select: all;
-}
+#contacto{background:linear-gradient(180deg,var(--dark),var(--burgundy-dark))}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
+.contact-card{background:var(--dark-card);border:1px solid rgba(245,197,24,.1);border-radius:8px;padding:1.5rem;text-align:center}
+.contact-card .c-icon{font-size:2rem;margin-bottom:.6rem}
+.contact-card h3{font-family:'Oswald',sans-serif;font-size:.85rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:.4rem}
+.contact-card p{font-size:.95rem;color:var(--cream)}
+.contact-card a{color:var(--gold);text-decoration:none}
+.contact-card a:hover{text-decoration:underline}
+.contact-card .sub{font-size:.8rem;color:var(--text-muted);margin-top:.2rem}
 
-/* ═══════════ PREMIOS ═══════════ */
-#premios {
-  background: linear-gradient(180deg, var(--dark) 0%, var(--burgundy-deep) 50%, var(--dark) 100%);
-}
-.premios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
-.premio-card {
-  background: var(--dark-card);
-  border: 1px solid rgba(245,197,24,0.1);
-  border-radius: 8px; padding: 1.5rem;
-  text-align: center;
-}
-.premio-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-.premio-card h3 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1rem; color: var(--cream);
-  margin-bottom: 0.4rem;
-}
-.premio-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+footer{background:var(--burgundy-deep);border-top:1px solid rgba(245,197,24,.1);padding:2rem 1.5rem;text-align:center}
+footer p{font-family:'Oswald',sans-serif;font-size:.8rem;color:var(--text-muted);letter-spacing:2px}
+footer .foot-brand{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--gold);letter-spacing:3px;margin-bottom:.3rem}
 
-/* ═══════════ GALERIA ═══════════ */
-#galeria { background: var(--dark); }
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 0.8rem;
-}
-.gallery-item {
-  aspect-ratio: 4/3;
-  background: var(--dark-card);
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-.gallery-item:hover { transform: scale(1.02); }
-.gallery-placeholder {
-  width: 100%; height: 100%;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  background: linear-gradient(135deg, var(--burgundy-dark), var(--dark-card));
-  color: var(--text-muted); font-size: 0.85rem;
-  font-family: 'Oswald', sans-serif;
-  letter-spacing: 1px;
-}
-.gallery-placeholder .icon { font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.5; }
-.gallery-note {
-  text-align: center; margin-top: 1.5rem;
-  font-size: 0.9rem; color: var(--text-muted);
-  font-style: italic;
-}
+.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:90;background:var(--green-wa);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .3s;text-decoration:none}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:32px;height:32px;fill:white}
 
-/* ═══════════ INSCRIPCION FORM ═══════════ */
-#formulario {
-  background: linear-gradient(180deg, var(--dark) 0%, var(--burgundy-deep) 100%);
-}
-.form-wrapper {
-  background: var(--dark-card);
-  border: 1px solid rgba(245,197,24,0.1);
-  border-radius: 12px;
-  padding: 2.5rem;
-  max-width: 700px;
-}
-.form-row { margin-bottom: 1.2rem; }
-.form-row label {
-  display: block;
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.8rem; font-weight: 600;
-  color: var(--gold-muted);
-  letter-spacing: 2px; text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-.form-row input, .form-row select, .form-row textarea {
-  width: 100%;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(245,197,24,0.15);
-  border-radius: 6px;
-  padding: 0.75rem 1rem;
-  color: var(--cream);
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 0.95rem;
-  transition: border-color 0.3s;
-}
-.form-row input:focus, .form-row select:focus, .form-row textarea:focus {
-  outline: none; border-color: var(--gold-muted);
-}
-.form-row select { cursor: pointer; }
-.form-row select option { background: var(--dark-card); }
-.form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form-submit { margin-top: 1.5rem; }
-.form-submit .btn { width: 100%; font-size: 1.05rem; padding: 1rem; }
-.form-note {
-  text-align: center; margin-top: 1rem;
-  font-size: 0.8rem; color: var(--text-muted);
-}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease-out,transform .7s ease-out}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-/* ═══════════ ALOJAMIENTO ═══════════ */
-#alojamiento { background: var(--dark); }
-.aloj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
-.aloj-card {
-  background: var(--dark-card);
-  border: 1px solid rgba(245,197,24,0.1);
-  border-radius: 8px; padding: 1.5rem;
-  transition: border-color 0.3s;
+@media(max-width:768px){
+  .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(26,10,15,.97);padding:1rem;border-bottom:1px solid rgba(245,197,24,.15)}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .form-2col{grid-template-columns:1fr}
+  .delegacion-row{grid-template-columns:1fr}
+  section{padding:3.5rem 1rem}
+  .form-wrapper{padding:1.5rem}
+  .contact-grid{grid-template-columns:1fr}
 }
-.aloj-card:hover { border-color: rgba(245,197,24,0.25); }
-.aloj-card h3 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.05rem; color: var(--cream);
-  margin-bottom: 0.3rem;
-}
-.aloj-type {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.7rem; color: var(--gold-muted);
-  letter-spacing: 2px; text-transform: uppercase;
-  margin-bottom: 0.6rem;
-}
-.aloj-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
-
-/* ═══════════ CONTACTO ═══════════ */
-#contacto {
-  background: linear-gradient(180deg, var(--dark) 0%, var(--burgundy-dark) 100%);
-}
-.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-.contact-card {
-  background: var(--dark-card);
-  border: 1px solid rgba(245,197,24,0.1);
-  border-radius: 8px; padding: 1.8rem;
-  text-align: center;
-}
-.contact-card .c-icon {
-  font-size: 2rem; margin-bottom: 0.6rem;
-}
-.contact-card h3 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.85rem; color: var(--gold);
-  letter-spacing: 2px; text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-.contact-card p { font-size: 0.95rem; color: var(--cream); }
-.contact-card a { color: var(--gold); text-decoration: none; }
-.contact-card a:hover { text-decoration: underline; }
-.contact-card .sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
-
-/* ═══════════ FOOTER ═══════════ */
-footer {
-  background: var(--burgundy-deep);
-  border-top: 1px solid rgba(245,197,24,0.1);
-  padding: 2rem 1.5rem;
-  text-align: center;
-}
-footer p {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.8rem; color: var(--text-muted);
-  letter-spacing: 2px;
-}
-footer .foot-brand {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem; color: var(--gold);
-  letter-spacing: 3px; margin-bottom: 0.3rem;
-}
-
-/* ═══════════ ANIMATIONS ═══════════ */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.reveal {
-  opacity: 0; transform: translateY(30px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ═══════════ RESPONSIVE ═══════════ */
-@media (max-width: 768px) {
-  .nav-links { 
-    display: none; flex-direction: column;
-    position: absolute; top: 100%; left: 0; right: 0;
-    background: rgba(26,10,15,0.97);
-    padding: 1rem;
-    border-bottom: 1px solid rgba(245,197,24,0.15);
-  }
-  .nav-links.open { display: flex; }
-  .hamburger { display: flex; }
-  .form-2col { grid-template-columns: 1fr; }
-  section { padding: 3.5rem 1rem; }
-  .form-wrapper { padding: 1.5rem; }
-}
-
-/* ═══════════ TABS ═══════════ */
-.cat-tabs {
-  display: flex; gap: 0.4rem; margin-bottom: 2rem; flex-wrap: wrap;
-}
-.cat-tab {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.85rem; font-weight: 600;
-  letter-spacing: 1px; text-transform: uppercase;
-  padding: 0.6rem 1.2rem; border: 1px solid rgba(245,197,24,0.2);
-  border-radius: 4px; background: transparent;
-  color: var(--text-muted); cursor: pointer;
-  transition: all 0.25s;
-}
-.cat-tab:hover { border-color: var(--gold-muted); color: var(--cream); }
-.cat-tab.active {
-  background: var(--gold); color: var(--burgundy-dark);
-  border-color: var(--gold);
-}
-.cat-detail { display: none; }
-.cat-detail.active { display: block; }
-.cat-detail-inner {
-  background: var(--dark-card);
-  border: 1px solid rgba(245,197,24,0.1);
-  border-radius: 8px;
-  padding: 2rem;
-}
-.cat-detail-inner h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem; color: var(--gold);
-  margin-bottom: 0.3rem;
-}
-.cat-detail-inner .subtitle {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.9rem; color: var(--gold-muted);
-  letter-spacing: 1px; margin-bottom: 1.2rem;
-}
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-@media (max-width: 600px) { .detail-grid { grid-template-columns: 1fr; } }
-.detail-item h4 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.75rem; color: var(--gold-muted);
-  letter-spacing: 2px; text-transform: uppercase;
-  margin-bottom: 0.3rem;
-}
-.detail-item p {
-  font-size: 0.9rem; color: var(--text-light); line-height: 1.5;
-}
-.detail-item ul { list-style: none; }
-.detail-item li {
-  font-size: 0.88rem; color: var(--text-muted); padding: 0.2rem 0;
-}
-.detail-item li::before { content: '▸'; color: var(--gold-muted); margin-right: 0.4rem; }
-
-.phase-flow {
-  display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
-  margin-top: 1rem; padding: 1rem;
-  background: rgba(245,197,24,0.05);
-  border-radius: 6px;
-}
-.phase-step {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.85rem; color: var(--cream);
-  background: var(--burgundy-dark);
-  padding: 0.4rem 1rem; border-radius: 4px;
-}
-.phase-arrow { color: var(--gold); font-weight: bold; }
 </style>
 </head>
 <body>
 
-<!-- ═══════ NAV ═══════ -->
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#" class="nav-brand">LANÚS TU AMIGO</a>
-    <button class="hamburger" id="menuBtn" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     <div class="nav-links" id="navLinks">
       <a href="#categorias">Categorías</a>
       <a href="#modalidad">Modalidad</a>
-      <a href="#inscripcion">Inscripción</a>
+      <a href="#inscripcion">Costos</a>
       <a href="#premios">Premios</a>
       <a href="#galeria">Galería</a>
-      <a href="#formulario">Formulario</a>
+      <a href="#formulario">Inscripción</a>
       <a href="#alojamiento">Alojamiento</a>
       <a href="#contacto">Contacto</a>
     </div>
   </div>
 </nav>
 
-<!-- ═══════ HERO ═══════ -->
 <section class="hero">
   <div class="hero-content">
     <div class="hero-badge">Sede Concordia · 5ta Edición</div>
@@ -635,276 +230,106 @@ footer .foot-brand {
     <p class="hero-sub">Torneo Nacional de Fútbol Infantil</p>
     <div class="hero-date-box">9, 10, 11 Y 12 DE JULIO 2026</div>
     <p class="hero-location">
-      <strong>Club Comunicaciones Concordia</strong> · Entre Ríos, Argentina
+      <a href="https://maps.google.com/?q=Club+Comunicaciones+Concordia+Entre+Rios+Argentina" target="_blank">
+        📍 <strong style="color:var(--cream)">Club Comunicaciones Concordia</strong> · Entre Ríos, Argentina
+      </a>
     </p>
     <div class="hero-cta">
-      <a href="#formulario" class="btn btn-gold">Inscribite ahora</a>
+      <a href="#formulario" class="btn btn-gold">Pre-inscribite</a>
       <a href="#categorias" class="btn btn-outline">Ver categorías</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════ CATEGORIAS ═══════ -->
 <section id="categorias">
   <div class="container">
     <p class="section-label reveal">Torneo 2026</p>
     <h2 class="section-title reveal">Categorías <span>y formato</span></h2>
     <p class="section-desc reveal">5 categorías, del fútbol 11 al fútbol 9, en canchas reglamentarias, reducidas y de césped sintético.</p>
-
     <div class="cat-grid reveal">
-      <!-- 2014 -->
-      <div class="cat-card">
-        <div class="cat-header">
-          <div class="cat-year">2014</div>
-          <div class="cat-format">Fútbol 11<small>Campo estándar · 25+25 min</small></div>
-        </div>
-        <div class="cat-body">
-          <ul>
-            <li>Cancha grande reglamentaria, 11 vs 11</li>
-            <li><strong>Terna arbitral</strong></li>
-            <li>Mínimo 13 jugadores por equipo</li>
-            <li>Cambios obligatorios hasta el minuto 20</li>
-            <li>Hasta 11 cambios, sin reingreso</li>
-          </ul>
-          <span class="cat-tag tag-clasificatorio">Clasifica al Provincial</span>
-        </div>
-      </div>
-      <!-- 2015 -->
-      <div class="cat-card">
-        <div class="cat-header">
-          <div class="cat-year">2015</div>
-          <div class="cat-format">Fútbol 11<small>Campo estándar · 20+20 min</small></div>
-        </div>
-        <div class="cat-body">
-          <ul>
-            <li>Cancha grande reglamentaria, 11 vs 11</li>
-            <li><strong>Terna arbitral</strong></li>
-            <li>Mínimo 13 jugadores por equipo</li>
-            <li>Cambios obligatorios hasta el minuto 15</li>
-            <li>Hasta 11 cambios, sin reingreso</li>
-          </ul>
-          <span class="cat-tag tag-clasificatorio">Clasifica al Provincial</span>
-        </div>
-      </div>
-      <!-- 2016 -->
-      <div class="cat-card">
-        <div class="cat-header">
-          <div class="cat-year">2016</div>
-          <div class="cat-format">Fútbol 11<small>Cancha reducida 40×70 · 20+20 min</small></div>
-        </div>
-        <div class="cat-body">
-          <ul>
-            <li>Cancha cruzada transversalmente, 11 vs 11</li>
-            <li>1 árbitro</li>
-            <li>Mínimo 13 jugadores por equipo</li>
-            <li>Cambios obligatorios hasta el minuto 16</li>
-            <li>Hasta 11 cambios, sin reingreso</li>
-          </ul>
-          <span class="cat-tag tag-clasificatorio">Clasifica al Provincial</span>
-        </div>
-      </div>
-      <!-- 2017 -->
-      <div class="cat-card">
-        <div class="cat-header">
-          <div class="cat-year">2017</div>
-          <div class="cat-format">Fútbol 9<small>Cancha reducida 30×50 · 20+20 min</small></div>
-        </div>
-        <div class="cat-body">
-          <ul>
-            <li>Cancha dividida en 4, 9 vs 9</li>
-            <li>1 árbitro</li>
-            <li>Mínimo 11 jugadores por equipo</li>
-            <li>Cambios obligatorios hasta el minuto 16</li>
-            <li>Hasta 9 cambios, sin reingreso</li>
-          </ul>
-          <span class="cat-tag tag-promocional">Torneo promocional</span>
-        </div>
-      </div>
-      <!-- 2018 -->
-      <div class="cat-card">
-        <div class="cat-header">
-          <div class="cat-year">2018</div>
-          <div class="cat-format">Fútbol 9<small>Sintético 25×40 · 18+18 min</small></div>
-        </div>
-        <div class="cat-body">
-          <ul>
-            <li>Césped sintético, 8 jugadores + 1 arquero</li>
-            <li><strong>Sin tarjetas ni expulsiones</strong></li>
-            <li>Mínimo 11 jugadores por equipo</li>
-            <li>Cambios obligatorios antes del min 14</li>
-            <li>Reingreso permitido (1 vez)</li>
-          </ul>
-          <span class="cat-tag tag-promocional">Torneo promocional</span>
-        </div>
-      </div>
+      <div class="cat-card"><div class="cat-header"><div class="cat-year">2014</div><div class="cat-format">Fútbol 11<small>Campo estándar · 25+25 min</small></div></div><div class="cat-body"><ul><li>Cancha grande reglamentaria, 11 vs 11</li><li><strong>Terna arbitral</strong></li><li>Mínimo 13 jugadores por equipo</li><li>Cambios obligatorios hasta el minuto 20</li><li>Hasta 11 cambios, sin reingreso</li></ul><span class="cat-tag tag-clasificatorio">Clasifica al Provincial</span></div></div>
+      <div class="cat-card"><div class="cat-header"><div class="cat-year">2015</div><div class="cat-format">Fútbol 11<small>Campo estándar · 20+20 min</small></div></div><div class="cat-body"><ul><li>Cancha grande reglamentaria, 11 vs 11</li><li><strong>Terna arbitral</strong></li><li>Mínimo 13 jugadores por equipo</li><li>Cambios obligatorios hasta el minuto 15</li><li>Hasta 11 cambios, sin reingreso</li></ul><span class="cat-tag tag-clasificatorio">Clasifica al Provincial</span></div></div>
+      <div class="cat-card"><div class="cat-header"><div class="cat-year">2016</div><div class="cat-format">Fútbol 11<small>Cancha reducida 40×70 · 20+20 min</small></div></div><div class="cat-body"><ul><li>Cancha cruzada transversalmente, 11 vs 11</li><li>1 árbitro</li><li>Mínimo 13 jugadores por equipo</li><li>Cambios obligatorios hasta el minuto 16</li><li>Hasta 11 cambios, sin reingreso</li></ul><span class="cat-tag tag-clasificatorio">Clasifica al Provincial</span></div></div>
+      <div class="cat-card"><div class="cat-header"><div class="cat-year">2017</div><div class="cat-format">Fútbol 9<small>Cancha reducida 30×50 · 20+20 min</small></div></div><div class="cat-body"><ul><li>Cancha dividida en 4, 9 vs 9</li><li>1 árbitro</li><li>Mínimo 11 jugadores por equipo</li><li>Cambios obligatorios hasta el minuto 16</li><li>Hasta 9 cambios, sin reingreso</li></ul><span class="cat-tag tag-promocional">Torneo promocional</span></div></div>
+      <div class="cat-card"><div class="cat-header"><div class="cat-year">2018</div><div class="cat-format">Fútbol 9<small>Sintético 25×40 · 18+18 min</small></div></div><div class="cat-body"><ul><li>Césped sintético, 8 jugadores + 1 arquero</li><li><strong>Sin tarjetas ni expulsiones</strong></li><li>Mínimo 11 jugadores por equipo</li><li>Cambios obligatorios antes del min 14</li><li>Reingreso permitido (1 vez)</li></ul><span class="cat-tag tag-promocional">Torneo promocional</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ MODALIDAD DETALLADA ═══════ -->
 <section id="modalidad">
   <div class="container">
     <p class="section-label reveal">Reglamento</p>
     <h2 class="section-title reveal">Modalidad <span>del torneo</span></h2>
-    <p class="section-desc reveal">Fase de grupos con clasificación a eliminatoria directa. Todas las categorías comparten el sistema de puntuación y desempate.</p>
-
+    <p class="section-desc reveal">Fase de grupos con clasificación a eliminatoria directa.</p>
     <div class="phase-flow reveal">
-      <span class="phase-step">Fase de Grupos</span>
-      <span class="phase-arrow">→</span>
-      <span class="phase-step">Eliminatoria (Octavos)</span>
-      <span class="phase-arrow">→</span>
-      <span class="phase-step">Cuartos</span>
-      <span class="phase-arrow">→</span>
-      <span class="phase-step">Semifinal</span>
-      <span class="phase-arrow">→</span>
+      <span class="phase-step">Fase de Grupos</span><span class="phase-arrow">→</span>
+      <span class="phase-step">Octavos</span><span class="phase-arrow">→</span>
+      <span class="phase-step">Cuartos</span><span class="phase-arrow">→</span>
+      <span class="phase-step">Semifinal</span><span class="phase-arrow">→</span>
       <span class="phase-step">Final</span>
     </div>
-
-    <br>
     <div class="rules-grid reveal">
-      <div class="rule-card">
-        <h3>Puntuación</h3>
-        <ul>
-          <li>Ganado: 3 puntos</li>
-          <li>Empatado: 1 punto</li>
-          <li>Perdido: 0 puntos</li>
-        </ul>
-      </div>
-      <div class="rule-card">
-        <h3>Criterios de clasificación</h3>
-        <ul>
-          <li>1. Cantidad de puntos</li>
-          <li>2. Diferencia de goles</li>
-          <li>3. Goles a favor</li>
-          <li>4. Partido entre sí</li>
-          <li>5. Mejor posición en Fair Play</li>
-          <li>6. Tanda de penales (3 iniciales)</li>
-        </ul>
-      </div>
-      <div class="rule-card">
-        <h3>Tarjetas y sanciones</h3>
-        <p>No se suspenden expulsados para el próximo partido. No se acumulan tarjetas amarillas. Cat. 2018: sin tarjetas ni expulsiones.</p>
-      </div>
-      <div class="rule-card">
-        <h3>Cambios obligatorios</h3>
-        <p>Ambos equipos deben realizar al menos la misma cantidad de cambios que el equipo con menos suplentes. Ejemplo: si un equipo tiene 17 jugadores y otro 13, ambos deben hacer mínimo 2 cambios.</p>
-      </div>
-      <div class="rule-card">
-        <h3>Ventaja deportiva</h3>
-        <p>En Octavos de final hay ventaja deportiva para el mejor clasificado de la zona. La ventaja se extingue luego de esa instancia.</p>
-      </div>
-      <div class="rule-card">
-        <h3>Doble inscripción</h3>
-        <p>Un jugador puede participar en dos categorías siempre que esté en la lista de buena fe de ambas. No puede jugar en una categoría inferior a la que le corresponde por edad.</p>
-      </div>
+      <div class="rule-card"><h3>Puntuación</h3><ul><li>Ganado: 3 puntos</li><li>Empatado: 1 punto</li><li>Perdido: 0 puntos</li></ul></div>
+      <div class="rule-card"><h3>Criterios de clasificación</h3><ul><li>1. Cantidad de puntos</li><li>2. Diferencia de goles</li><li>3. Goles a favor</li><li>4. Partido entre sí</li><li>5. Mejor posición en Fair Play</li><li>6. Tanda de penales (3 iniciales)</li></ul></div>
+      <div class="rule-card"><h3>Tarjetas y sanciones</h3><p>No se suspenden expulsados para el próximo partido. No se acumulan amarillas. Cat. 2018: sin tarjetas ni expulsiones.</p></div>
+      <div class="rule-card"><h3>Cambios obligatorios</h3><p>Ambos equipos deben realizar al menos la misma cantidad de cambios que el equipo con menos suplentes. Ejemplo: si un equipo tiene 17 jugadores y otro 13, ambos deben hacer mínimo 2 cambios.</p></div>
+      <div class="rule-card"><h3>Ventaja deportiva</h3><p>En Octavos de final hay ventaja deportiva para el mejor clasificado de la zona. Se extingue luego de esa instancia.</p></div>
+      <div class="rule-card"><h3>Doble inscripción</h3><p>Un jugador puede participar en dos categorías si está en la lista de buena fe de ambas. No puede jugar en una categoría inferior a su edad.</p></div>
     </div>
-
     <div class="formula-box reveal">
-      <p style="color: var(--cream); font-family: 'Oswald', sans-serif; letter-spacing: 2px; text-transform: uppercase;">Fair Play</p>
+      <p style="color:var(--cream);font-family:'Oswald',sans-serif;letter-spacing:2px;text-transform:uppercase">Fair Play</p>
       <div class="formula">P<sub>FP</sub> = 2 × T<sub>Rojas</sub> + T<sub>Amarillas</sub></div>
       <p>Menor puntaje = mejor posición en la tabla Fair Play</p>
     </div>
   </div>
 </section>
 
-<!-- ═══════ INSCRIPCION ═══════ -->
 <section id="inscripcion">
   <div class="container">
     <p class="section-label reveal">Costos 2026</p>
-    <h2 class="section-title reveal">Inscripción <span>y pagos</span></h2>
-    <p class="section-desc reveal">Costos por equipo inscripto en cada categoría. Pagá en hasta 4 cuotas sin interés.</p>
-
+    <h2 class="section-title reveal">Costos <span>y pagos</span></h2>
+    <p class="section-desc reveal">Costos por equipo inscripto. Pagá en hasta 4 cuotas sin interés.</p>
     <div class="pricing-cards reveal">
-      <div class="price-card">
-        <div class="price-cat">Cat. 2014 / 2015</div>
-        <div class="price-amount"><small>$</small>200.000</div>
-        <p class="price-note">Fútbol 11 · Campo estándar</p>
-      </div>
-      <div class="price-card">
-        <div class="price-cat">Cat. 2016 / 2017</div>
-        <div class="price-amount"><small>$</small>180.000</div>
-        <p class="price-note">Fútbol 11 y 9 · Cancha reducida</p>
-      </div>
-      <div class="price-card">
-        <div class="price-cat">Cat. 2018</div>
-        <div class="price-amount"><small>$</small>150.000</div>
-        <p class="price-note">Fútbol 9 · Césped sintético</p>
-      </div>
+      <div class="price-card"><div class="price-cat">Cat. 2014 / 2015</div><div class="price-amount"><small>$</small>200.000</div><p class="price-note">Fútbol 11 · Campo estándar</p></div>
+      <div class="price-card"><div class="price-cat">Cat. 2016 / 2017</div><div class="price-amount"><small>$</small>180.000</div><p class="price-note">Fútbol 11 y 9 · Cancha reducida</p></div>
+      <div class="price-card"><div class="price-cat">Cat. 2018</div><div class="price-amount"><small>$</small>150.000</div><p class="price-note">Fútbol 9 · Césped sintético</p></div>
     </div>
-
     <div class="promo-banner reveal">
-      <h3>10% DE DESCUENTO · PAGO TOTAL ANTES DE JUNIO</h3>
-      <p>Abonando el total antes de junio, tu club accede al descuento.</p>
+      <h3>10% DE DESCUENTO · PAGO TOTAL ANTES DEL 10/06</h3>
+      <p>Abonando el total antes del 10 de junio, tu club accede al descuento.</p>
     </div>
-
     <div class="payment-info reveal">
-      <div class="payment-card">
-        <h4>Forma de pago</h4>
-        <p>2, 3 o 4 cuotas sin interés. Transferencia bancaria o Mercado Pago.</p>
-      </div>
-      <div class="payment-card">
-        <h4>Alias de transferencia</h4>
-        <p>A nombre de <strong style="color: var(--cream);">Club Comunicaciones Concordia</strong></p>
-        <div class="alias-box">club.comu.concordia</div>
-      </div>
-      <div class="payment-card">
-        <h4>Documentación</h4>
-        <p>Todos los jugadores deberán presentar <strong style="color: var(--cream);">DNI</strong> al firmar planilla. Si no cuentan con DNI, avisar a la organización con anticipación.</p>
-      </div>
+      <div class="payment-card"><h4>Forma de pago</h4><p>2, 3 o 4 cuotas sin interés. Transferencia bancaria o Mercado Pago.</p></div>
+      <div class="payment-card"><h4>Alias de transferencia</h4><p>A nombre de <strong style="color:var(--cream)">Club Comunicaciones Concordia</strong></p><div class="alias-box" onclick="navigator.clipboard.writeText('club.comu.concordia').then(()=>{this.textContent='¡Copiado!';setTimeout(()=>{this.textContent='club.comu.concordia'},2000)})">club.comu.concordia</div></div>
+      <div class="payment-card"><h4>Documentación</h4><p>Todos los jugadores deben presentar <strong style="color:var(--cream)">DNI</strong> al firmar planilla. Sin DNI, avisar a la organización previamente.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ PREMIOS ═══════ -->
 <section id="premios">
   <div class="container">
     <p class="section-label reveal">Reconocimientos</p>
     <h2 class="section-title reveal">Premios <span>y clasificación</span></h2>
-    <p class="section-desc reveal">Trofeos y medallas para los mejores, más la posibilidad de seguir compitiendo a nivel provincial y nacional.</p>
-
     <div class="premios-grid reveal">
-      <div class="premio-card">
-        <div class="premio-icon">🏆</div>
-        <h3>Campeón</h3>
-        <p>Trofeo + medallas para todos los jugadores del plantel campeón</p>
-      </div>
-      <div class="premio-card">
-        <div class="premio-icon">🥈</div>
-        <h3>Subcampeón</h3>
-        <p>Medallas para todo el plantel subcampeón</p>
-      </div>
-      <div class="premio-card">
-        <div class="premio-icon">🥉</div>
-        <h3>Tercer puesto</h3>
-        <p>Medallas para todo el plantel del tercer lugar</p>
-      </div>
-      <div class="premio-card">
-        <div class="premio-icon">⭐</div>
-        <h3>Provincial de Lanús</h3>
-        <p>El campeón de Cat. 2014, 2015 y 2016 clasifica al Provincial de Lanús (Sep-Oct 2026)</p>
-      </div>
-      <div class="premio-card">
-        <div class="premio-icon">🏅</div>
-        <h3>Nacional de Lanús</h3>
-        <p>El campeón provincial accede al Nacional de Lanús (Dic 2026 / Ene-Feb 2027)</p>
-      </div>
-      <div class="premio-card">
-        <div class="premio-icon">🤝</div>
-        <h3>Fair Play</h3>
-        <p>Reconocimiento al equipo con mejor puntaje en la tabla de Fair Play</p>
-      </div>
+      <div class="premio-card"><div class="premio-icon">🏆</div><h3>Campeón</h3><p>Trofeo + medallas para todo el plantel</p></div>
+      <div class="premio-card"><div class="premio-icon">🥈</div><h3>Subcampeón</h3><p>Medallas para todo el plantel</p></div>
+      <div class="premio-card"><div class="premio-icon">🥉</div><h3>Tercer puesto</h3><p>Medallas para todo el plantel</p></div>
+      <div class="premio-card"><div class="premio-icon">⭐</div><h3>Provincial de Lanús</h3><p>Cat. 2014, 2015 y 2016: el campeón clasifica al Provincial (Sep-Oct 2026)</p></div>
+      <div class="premio-card"><div class="premio-icon">🏅</div><h3>Nacional de Lanús</h3><p>Campeón provincial accede al Nacional (Dic 2026 / Ene-Feb 2027)</p></div>
+      <div class="premio-card"><div class="premio-icon">🤝</div><h3>Fair Play</h3><p>Reconocimiento al equipo con mejor puntaje Fair Play</p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ GALERIA ═══════ -->
 <section id="galeria">
   <div class="container">
     <p class="section-label reveal">Ediciones anteriores</p>
     <h2 class="section-title reveal">Galería <span>de fotos</span></h2>
-    <p class="section-desc reveal">Revivé los mejores momentos de las ediciones pasadas del torneo en Concordia.</p>
-
-    <div class="gallery-grid reveal">
+    <p class="section-desc reveal">Los mejores momentos de las ediciones pasadas del torneo.</p>
+    <div class="gallery-grid reveal" id="galleryGrid">
+      <!-- PARA AGREGAR FOTOS: creá carpeta "fotos/" en tu repo de GitHub, subí las imágenes, y reemplazá los placeholders por:
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="fotos/nombre.jpg" alt="Descripción" loading="lazy"></div>
+      -->
       <div class="gallery-item"><div class="gallery-placeholder"><span class="icon">📸</span>Edición 2022</div></div>
       <div class="gallery-item"><div class="gallery-placeholder"><span class="icon">📸</span>Edición 2023</div></div>
       <div class="gallery-item"><div class="gallery-placeholder"><span class="icon">📸</span>Edición 2024</div></div>
@@ -912,192 +337,197 @@ footer .foot-brand {
       <div class="gallery-item"><div class="gallery-placeholder"><span class="icon">📸</span>Premiaciones</div></div>
       <div class="gallery-item"><div class="gallery-placeholder"><span class="icon">📸</span>Mejores jugadas</div></div>
     </div>
-    <p class="gallery-note reveal">Próximamente se publicarán las fotos. ¡Envianos las tuyas a nuestro WhatsApp!</p>
+    <p class="gallery-note reveal">📷 ¡Envianos tus fotos por WhatsApp y las publicamos acá!</p>
   </div>
 </section>
 
-<!-- ═══════ FORMULARIO ═══════ -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
 <section id="formulario">
   <div class="container">
     <p class="section-label reveal">Anotá a tu club</p>
-    <h2 class="section-title reveal">Formulario <span>de inscripción</span></h2>
-    <p class="section-desc reveal">Completá los datos y nos pondremos en contacto para confirmar tu participación.</p>
+    <h2 class="section-title reveal">Consulta <span>y Pre-inscripción</span></h2>
+    <p class="section-desc reveal">Realizá tu consulta o completá la pre-inscripción de tu club.</p>
 
-    <div class="form-wrapper reveal">
-      <div class="form-2col">
-        <div class="form-row">
-          <label>Nombre del Club</label>
-          <input type="text" placeholder="Ej: Club Atlético Talleres">
-        </div>
-        <div class="form-row">
-          <label>Ciudad / Provincia</label>
-          <input type="text" placeholder="Ej: Córdoba, Córdoba">
-        </div>
+    <div class="form-tabs reveal">
+      <button class="form-tab active" onclick="switchTab('consulta',this)">💬 Consulta</button>
+      <button class="form-tab" onclick="switchTab('preinscripcion',this)">📋 Pre-inscripción</button>
+    </div>
+
+    <!-- CONSULTA -->
+    <div class="form-panel active" id="panel-consulta">
+      <div class="form-wrapper reveal">
+        <form id="formConsulta" onsubmit="return handleConsulta(event)">
+          <div class="form-2col">
+            <div class="form-row"><label>Club / Escuelita</label><input type="text" name="club" placeholder="Ej: Club Atlético Talleres" required></div>
+            <div class="form-row"><label>Ciudad / Provincia</label><input type="text" name="ciudad" placeholder="Ej: Córdoba, Córdoba"></div>
+          </div>
+          <div class="form-2col">
+            <div class="form-row"><label>Nombre del contacto</label><input type="text" name="contacto" placeholder="Nombre y apellido" required></div>
+            <div class="form-row"><label>Teléfono</label><input type="tel" name="telefono" placeholder="Ej: 3434659942" required></div>
+          </div>
+          <div class="form-row"><label>Email</label><input type="email" name="email" placeholder="correo@ejemplo.com"></div>
+          <div class="form-row"><label>Categorías de interés</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item"><input type="checkbox" name="categorias" value="2014"> 2014</label>
+              <label class="checkbox-item"><input type="checkbox" name="categorias" value="2015"> 2015</label>
+              <label class="checkbox-item"><input type="checkbox" name="categorias" value="2016"> 2016</label>
+              <label class="checkbox-item"><input type="checkbox" name="categorias" value="2017"> 2017</label>
+              <label class="checkbox-item"><input type="checkbox" name="categorias" value="2018"> 2018</label>
+            </div>
+          </div>
+          <div class="form-row"><label>Consulta</label><textarea name="consulta" rows="4" placeholder="Escribí tu consulta sobre el torneo, alojamiento, formato, etc." required></textarea></div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-gold">✉️ Enviar por Email</button>
+            <button type="button" class="btn btn-wa" onclick="enviarConsultaWA()">📱 Enviar por WhatsApp</button>
+          </div>
+          <p class="form-note">Tu consulta llega directo a la organización.</p>
+        </form>
+        <div class="form-success" id="successConsulta"><div class="check">✅</div><h3>¡Consulta enviada!</h3><p>Nos comunicaremos contigo a la brevedad.</p></div>
       </div>
-      <div class="form-2col">
-        <div class="form-row">
-          <label>Nombre del Responsable</label>
-          <input type="text" placeholder="Nombre y apellido">
-        </div>
-        <div class="form-row">
-          <label>Teléfono (con código de área)</label>
-          <input type="tel" placeholder="Ej: 3434659942">
-        </div>
+    </div>
+
+    <!-- PRE-INSCRIPCION -->
+    <div class="form-panel" id="panel-preinscripcion">
+      <div class="form-wrapper reveal">
+        <form id="formPre" onsubmit="return handlePre(event)">
+          <div class="form-section-title">Datos del Club</div>
+          <div class="form-2col">
+            <div class="form-row"><label>Nombre del Club *</label><input type="text" name="club" required placeholder="Nombre oficial"></div>
+            <div class="form-row"><label>Ciudad / Provincia *</label><input type="text" name="ciudad" required placeholder="Ej: Paraná, Entre Ríos"></div>
+          </div>
+          <div class="form-2col">
+            <div class="form-row"><label>Responsable *</label><input type="text" name="responsable" required placeholder="Nombre y apellido"></div>
+            <div class="form-row"><label>Cargo</label><input type="text" name="cargo" placeholder="Ej: Coordinador, DT"></div>
+          </div>
+          <div class="form-2col">
+            <div class="form-row"><label>Teléfono *</label><input type="tel" name="telefono" required placeholder="Con código de área"></div>
+            <div class="form-row"><label>Email *</label><input type="email" name="email" required placeholder="correo@ejemplo.com"></div>
+          </div>
+
+          <div class="form-section-title">Categorías a inscribir</div>
+          <div class="form-row">
+            <div class="checkbox-group">
+              <label class="checkbox-item"><input type="checkbox" name="cat_insc" value="2014"> 2014</label>
+              <label class="checkbox-item"><input type="checkbox" name="cat_insc" value="2015"> 2015</label>
+              <label class="checkbox-item"><input type="checkbox" name="cat_insc" value="2016"> 2016</label>
+              <label class="checkbox-item"><input type="checkbox" name="cat_insc" value="2017"> 2017</label>
+              <label class="checkbox-item"><input type="checkbox" name="cat_insc" value="2018"> 2018</label>
+            </div>
+          </div>
+
+          <div class="form-section-title">Pago</div>
+          <div class="form-2col">
+            <div class="form-row"><label>Forma de pago</label>
+              <select name="forma_pago"><option value="">Seleccionar</option><option value="total_anticipado">Pago total anticipado (10% dto)</option><option value="2_cuotas">2 cuotas sin interés</option><option value="3_cuotas">3 cuotas sin interés</option><option value="4_cuotas">4 cuotas sin interés</option></select>
+            </div>
+            <div class="form-row"><label>¿Ya realizaste algún pago?</label>
+              <select name="pago_estado"><option value="no">No, todavía no</option><option value="parcial">Sí, pago parcial</option><option value="total">Sí, pago total</option></select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Comprobante de pago</label>
+            <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:.3rem">Enviá el comprobante por <a href="https://wa.me/5493434659942?text=Hola!%20Te%20envío%20comprobante%20de%20pago%20-%20Torneo%20Lanús%202026" target="_blank" style="color:var(--gold)">WhatsApp</a> o a <a href="mailto:clubcomunicacionesconcordia@gmail.com" style="color:var(--gold)">clubcomunicacionesconcordia@gmail.com</a></p>
+          </div>
+
+          <div class="form-section-title">Cuerpo Técnico y Acompañantes</div>
+          <div id="staffBox">
+            <div class="delegacion-row"><div class="form-row"><input type="text" name="staff_nombre[]" placeholder="Nombre y Apellido"></div><div class="form-row"><input type="text" name="staff_dni[]" placeholder="DNI"></div><div class="form-row"><select name="staff_rol[]"><option>DT</option><option>Ayudante</option><option>Profe / PF</option><option>Delegado</option><option>Acompañante</option></select></div><button type="button" class="remove-row" onclick="delRow(this)">✕</button></div>
+          </div>
+          <button type="button" class="add-row-btn" onclick="addStaff()">+ Agregar persona</button>
+
+          <div class="form-section-title">Jugadores</div>
+          <div id="playerBox">
+            <div class="delegacion-row"><div class="form-row"><input type="text" name="jug_nombre[]" placeholder="Nombre y Apellido"></div><div class="form-row"><input type="text" name="jug_dni[]" placeholder="DNI"></div><div class="form-row"><input type="text" name="jug_cat[]" placeholder="Cat. (ej: 2015)"></div><button type="button" class="remove-row" onclick="delRow(this)">✕</button></div>
+          </div>
+          <button type="button" class="add-row-btn" onclick="addPlayer()">+ Agregar jugador</button>
+
+          <div class="form-row" style="margin-top:1.5rem"><label>Observaciones</label><textarea name="obs" rows="3" placeholder="¿Necesitás alojamiento? ¿Alguna particularidad?"></textarea></div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-gold">📋 Enviar Pre-inscripción</button>
+            <button type="button" class="btn btn-wa" onclick="enviarPreWA()">📱 Enviar por WhatsApp</button>
+          </div>
+          <p class="form-note">Nos pondremos en contacto para confirmar.</p>
+        </form>
+        <div class="form-success" id="successPre"><div class="check">✅</div><h3>¡Pre-inscripción enviada!</h3><p>Revisaremos tus datos y te contactaremos. ¡Gracias!</p></div>
       </div>
-      <div class="form-row">
-        <label>Email</label>
-        <input type="email" placeholder="correo@ejemplo.com">
-      </div>
-      <div class="form-2col">
-        <div class="form-row">
-          <label>Categoría/s a inscribir</label>
-          <select>
-            <option value="">Seleccionar categoría</option>
-            <option>Cat. 2014</option>
-            <option>Cat. 2015</option>
-            <option>Cat. 2016</option>
-            <option>Cat. 2017</option>
-            <option>Cat. 2018</option>
-            <option>Múltiples categorías</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label>Cantidad de equipos</label>
-          <select>
-            <option value="">Seleccionar</option>
-            <option>1 equipo</option>
-            <option>2 equipos</option>
-            <option>3 equipos</option>
-            <option>4 o más equipos</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <label>Consultas o comentarios</label>
-        <textarea rows="3" placeholder="¿Necesitás información sobre alojamiento? ¿Tenés alguna consulta?"></textarea>
-      </div>
-      <div class="form-submit">
-        <a href="https://wa.me/5493434659942?text=Hola!%20Quiero%20inscribir%20a%20mi%20club%20en%20el%20torneo%20Lanús%20Tu%20Amigo%202026" target="_blank" class="btn btn-gold" style="display:block; text-align:center;">
-          Enviar consulta por WhatsApp
-        </a>
-      </div>
-      <p class="form-note">Al hacer clic, se abrirá una conversación de WhatsApp con la organización.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══════ ALOJAMIENTO ═══════ -->
 <section id="alojamiento">
   <div class="container">
     <p class="section-label reveal">Para equipos visitantes</p>
     <h2 class="section-title reveal">Alojamiento <span>en Concordia</span></h2>
-    <p class="section-desc reveal">Concordia cuenta con diversas opciones de alojamiento para todos los presupuestos. Consultá por convenios especiales para equipos del torneo.</p>
-
+    <p class="section-desc reveal">Opciones para todos los presupuestos. Consultá por convenios especiales.</p>
     <div class="aloj-grid reveal">
-      <div class="aloj-card">
-        <div class="aloj-type">Hoteles</div>
-        <h3>Hoteles céntricos</h3>
-        <p>Concordia cuenta con hoteles de 1 a 3 estrellas en zona céntrica, a minutos del club. Consultá disponibilidad con anticipación.</p>
-      </div>
-      <div class="aloj-card">
-        <div class="aloj-type">Cabañas y apart</div>
-        <h3>Cabañas y Apart Hotels</h3>
-        <p>Ideal para delegaciones. Opciones con cocina, para abaratar costos de estadía. Zona Termas de Salto Grande y costa del río.</p>
-      </div>
-      <div class="aloj-card">
-        <div class="aloj-type">Alojamiento en el club</div>
-        <h3>Instalaciones del Club</h3>
-        <p>Consultá con la organización por la posibilidad de alojarse en las instalaciones del club. Ideal para delegaciones con bajo presupuesto.</p>
-      </div>
-      <div class="aloj-card">
-        <div class="aloj-type">Contacto alojamiento</div>
-        <h3>¿Necesitás ayuda?</h3>
-        <p>Contactanos y te ayudamos a buscar el alojamiento que mejor se adapte a tu delegación y presupuesto.</p>
-        <p style="margin-top: 0.5rem;"><a href="https://wa.me/5493434659942?text=Hola!%20Consulto%20por%20alojamiento%20para%20el%20torneo%20Lanús%20Tu%20Amigo%202026" target="_blank" style="color: var(--gold); text-decoration: none; font-weight: 600;">WhatsApp →</a></p>
-      </div>
+      <div class="aloj-card"><div class="aloj-type">Hoteles</div><h3>Hoteles céntricos</h3><p>Hoteles de 1 a 3 estrellas en zona céntrica, a minutos del club.</p></div>
+      <div class="aloj-card"><div class="aloj-type">Cabañas y apart</div><h3>Cabañas y Apart Hotels</h3><p>Ideal para delegaciones. Opciones con cocina. Zona Termas y costa del río.</p></div>
+      <div class="aloj-card"><div class="aloj-type">En el club</div><h3>Instalaciones del Club</h3><p>Consultá por la posibilidad de alojarse en el club. Ideal para bajo presupuesto.</p></div>
+      <div class="aloj-card"><div class="aloj-type">Consultas</div><h3>¿Necesitás ayuda?</h3><p>Te ayudamos a encontrar alojamiento.</p><p style="margin-top:.5rem"><a href="https://wa.me/5493434659942?text=Hola!%20Consulto%20por%20alojamiento%20-%20Torneo%20Lanús%202026" target="_blank">WhatsApp para alojamiento →</a></p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ CONTACTO ═══════ -->
 <section id="contacto">
   <div class="container">
     <p class="section-label reveal">Organización</p>
     <h2 class="section-title reveal">Contacto <span>directo</span></h2>
-    <p class="section-desc reveal">Ante cualquier duda, comunicate directamente con la organización del torneo.</p>
-
     <div class="contact-grid reveal">
-      <div class="contact-card">
-        <div class="c-icon">📱</div>
-        <h3>WhatsApp</h3>
-        <p><a href="https://wa.me/5493434659942">3434659942</a></p>
-        <p class="sub">Juan Manuel · Organización</p>
-      </div>
-      <div class="contact-card">
-        <div class="c-icon">✉️</div>
-        <h3>Email</h3>
-        <p><a href="mailto:clubcomunicacionesconcordia@gmail.com">clubcomunicacionesconcordia@gmail.com</a></p>
-        <p class="sub">Club Comunicaciones Concordia</p>
-      </div>
-      <div class="contact-card">
-        <div class="c-icon">📍</div>
-        <h3>Ubicación</h3>
-        <p>Club Comunicaciones</p>
-        <p class="sub">Concordia, Entre Ríos, Argentina</p>
-      </div>
+      <div class="contact-card"><div class="c-icon">📱</div><h3>WhatsApp</h3><p><a href="https://wa.me/5493434659942">3434659942</a></p><p class="sub">Juan Manuel</p></div>
+      <div class="contact-card"><div class="c-icon">📞</div><h3>Teléfono</h3><p><a href="tel:+5493454174279">3454174279</a></p><p class="sub">Contacto alternativo</p></div>
+      <div class="contact-card"><div class="c-icon">✉️</div><h3>Email</h3><p><a href="mailto:clubcomunicacionesconcordia@gmail.com">clubcomunicacionesconcordia<br>@gmail.com</a></p></div>
+      <div class="contact-card"><div class="c-icon">📍</div><h3>Ubicación</h3><p><a href="https://maps.google.com/?q=Club+Comunicaciones+Concordia+Entre+Rios+Argentina" target="_blank">Club Comunicaciones<br>Concordia, Entre Ríos</a></p><p class="sub">Ver en Google Maps →</p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ FOOTER ═══════ -->
 <footer>
   <div class="foot-brand">LANÚS TU AMIGO · CONCORDIA 2026</div>
   <p>Organiza: Club Comunicaciones Concordia · 5ta Edición</p>
-  <p style="margin-top: 0.5rem; font-size: 0.7rem;">Torneo avalado por Club Atlético Lanús</p>
+  <p style="margin-top:.5rem;font-size:.7rem">Torneo avalado por Club Atlético Lanús</p>
 </footer>
 
+<a href="https://wa.me/5493434659942?text=Hola!%20Consulto%20por%20el%20torneo%20Lanús%20Tu%20Amigo%202026" target="_blank" class="wa-float" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <script>
-// Nav scroll effect
-const nav = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 50);
-});
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
 
-// Hamburger menu
-document.getElementById('menuBtn').addEventListener('click', () => {
-  document.getElementById('navLinks').classList.toggle('open');
-});
+const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Close menu on link click
-document.querySelectorAll('.nav-links a').forEach(a => {
-  a.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('open');
-  });
-});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'})})});
 
-// Reveal on scroll
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-reveals.forEach(el => observer.observe(el));
+function switchTab(id,btn){document.querySelectorAll('.form-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.form-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById('panel-'+id).classList.add('active')}
 
-// Smooth scroll for nav links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      const offset = 70;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  });
-});
+function addStaff(){const c=document.getElementById('staffBox');const r=document.createElement('div');r.className='delegacion-row';r.innerHTML='<div class="form-row"><input type="text" name="staff_nombre[]" placeholder="Nombre y Apellido"></div><div class="form-row"><input type="text" name="staff_dni[]" placeholder="DNI"></div><div class="form-row"><select name="staff_rol[]"><option>DT</option><option>Ayudante</option><option>Profe / PF</option><option>Delegado</option><option>Acompañante</option></select></div><button type="button" class="remove-row" onclick="delRow(this)">✕</button>';c.appendChild(r)}
+function addPlayer(){const c=document.getElementById('playerBox');const r=document.createElement('div');r.className='delegacion-row';r.innerHTML='<div class="form-row"><input type="text" name="jug_nombre[]" placeholder="Nombre y Apellido"></div><div class="form-row"><input type="text" name="jug_dni[]" placeholder="DNI"></div><div class="form-row"><input type="text" name="jug_cat[]" placeholder="Cat. (ej: 2015)"></div><button type="button" class="remove-row" onclick="delRow(this)">✕</button>';c.appendChild(r)}
+function delRow(btn){const p=btn.closest('.delegacion-row').parentElement;if(p.children.length>1)btn.closest('.delegacion-row').remove()}
+
+function getCData(){const f=document.getElementById('formConsulta');const cats=[...f.querySelectorAll('input[name="categorias"]:checked')].map(c=>c.value).join(', ');return{club:f.club.value,ciudad:f.ciudad.value,contacto:f.contacto.value,telefono:f.telefono.value,email:f.email.value,categorias:cats||'No especificado',consulta:f.consulta.value}}
+
+function handleConsulta(e){e.preventDefault();const d=getCData();const s=encodeURIComponent('Consulta Torneo Lanús 2026 - '+d.club);const b=encodeURIComponent('CONSULTA TORNEO LANÚS TU AMIGO 2026\n━━━━━━━━━━━━━━━\nClub: '+d.club+'\nCiudad: '+d.ciudad+'\nContacto: '+d.contacto+'\nTeléfono: '+d.telefono+'\nEmail: '+d.email+'\nCategorías: '+d.categorias+'\n━━━━━━━━━━━━━━━\nConsulta:\n'+d.consulta);window.open('mailto:clubcomunicacionesconcordia@gmail.com?subject='+s+'&body='+b,'_self');document.getElementById('formConsulta').style.display='none';document.getElementById('successConsulta').classList.add('show');return false}
+
+function enviarConsultaWA(){const f=document.getElementById('formConsulta');if(!f.club.value||!f.contacto.value||!f.consulta.value){alert('Completá al menos: Club, Contacto y Consulta.');return}const d=getCData();const m=encodeURIComponent('⚽ *CONSULTA - TORNEO LANÚS TU AMIGO 2026*\n\n🏟️ Club: '+d.club+'\n📍 Ciudad: '+d.ciudad+'\n👤 Contacto: '+d.contacto+'\n📞 Tel: '+d.telefono+'\n📧 Email: '+d.email+'\n📋 Categorías: '+d.categorias+'\n\n💬 Consulta:\n'+d.consulta);window.open('https://wa.me/5493434659942?text='+m,'_blank')}
+
+function getPData(){const f=document.getElementById('formPre');const cats=[...f.querySelectorAll('input[name="cat_insc"]:checked')].map(c=>c.value).join(', ');let staff=[];f.querySelectorAll('input[name="staff_nombre[]"]').forEach((el,i)=>{if(el.value.trim())staff.push(el.value+' - DNI: '+f.querySelectorAll('input[name="staff_dni[]"]')[i].value+' - '+f.querySelectorAll('select[name="staff_rol[]"]')[i].value)});let jug=[];f.querySelectorAll('input[name="jug_nombre[]"]').forEach((el,i)=>{if(el.value.trim())jug.push(el.value+' - DNI: '+f.querySelectorAll('input[name="jug_dni[]"]')[i].value+' - Cat: '+f.querySelectorAll('input[name="jug_cat[]"]')[i].value)});return{club:f.club.value,ciudad:f.ciudad.value,resp:f.responsable.value,cargo:f.cargo.value,tel:f.telefono.value,email:f.email.value,cats:cats||'No especificado',pago:f.forma_pago.value||'No especificado',estado:f.pago_estado.value,staff,jug,obs:f.obs.value}}
+
+function handlePre(e){e.preventDefault();const d=getPData();let b='PRE-INSCRIPCIÓN TORNEO LANÚS TU AMIGO 2026\n━━━━━━━━━━━━━━━\n\nDATOS DEL CLUB\nClub: '+d.club+'\nCiudad: '+d.ciudad+'\nResponsable: '+d.resp+' ('+d.cargo+')\nTeléfono: '+d.tel+'\nEmail: '+d.email+'\n\nCATEGORÍAS: '+d.cats+'\n\nPAGO: '+d.pago+' ('+d.estado+')\n';if(d.staff.length)b+='\nCUERPO TÉCNICO\n'+d.staff.join('\n')+'\n';if(d.jug.length)b+='\nJUGADORES\n'+d.jug.join('\n')+'\n';if(d.obs)b+='\nOBSERVACIONES\n'+d.obs;const s=encodeURIComponent('Pre-inscripción Lanús 2026 - '+d.club);window.open('mailto:clubcomunicacionesconcordia@gmail.com?subject='+s+'&body='+encodeURIComponent(b),'_self');document.getElementById('formPre').style.display='none';document.getElementById('successPre').classList.add('show');return false}
+
+function enviarPreWA(){const f=document.getElementById('formPre');if(!f.club.value||!f.responsable.value||!f.telefono.value){alert('Completá al menos: Club, Responsable y Teléfono.');return}const d=getPData();let m='⚽ *PRE-INSCRIPCIÓN - LANÚS TU AMIGO 2026*\n\n🏟️ Club: '+d.club+'\n📍 Ciudad: '+d.ciudad+'\n👤 Resp: '+d.resp+' ('+d.cargo+')\n📞 Tel: '+d.tel+'\n📧 Email: '+d.email+'\n📋 Categorías: '+d.cats+'\n💰 Pago: '+d.pago+' ('+d.estado+')';if(d.staff.length)m+='\n\n👥 *Cuerpo Técnico:*\n'+d.staff.join('\n');if(d.jug.length)m+='\n\n⚽ *Jugadores:*\n'+d.jug.join('\n');if(d.obs)m+='\n\n📝 Obs: '+d.obs;window.open('https://wa.me/5493434659942?text='+encodeURIComponent(m),'_blank')}
+
+function openLightbox(el){const img=el.querySelector('img');if(!img)return;document.getElementById('lightboxImg').src=img.src;document.getElementById('lightbox').classList.add('active')}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('active')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
 </script>
 </body>
 </html>
